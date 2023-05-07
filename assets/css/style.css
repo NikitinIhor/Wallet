@@ -1,0 +1,340 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    min-width: 320px;
+}
+
+body {
+    color: #000;
+    line-height: 1;
+    font-family: "Montserrat";
+    font-size: 1.125rem;
+    font-weight: 600;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+button,
+textarea {
+    font-family: "Montserrat";
+    font-size: inherit;
+}
+
+button {
+    cursor: pointer;
+    color: inherit;
+    background-color: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+[class*=-ibg] {
+    position: relative;
+}
+
+[class*=-ibg] img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+[class*=__container] {
+    max-width: 101.875rem;
+    margin: 0 auto;
+    padding: 0 0.9375rem;
+}
+
+.page h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 1.25rem;
+}
+
+@media (max-width: 750px) {
+    .page h1 {
+        text-align: left;
+    }
+}
+
+.page span {
+    font-size: 3.125rem;
+    font-weight: 700;
+}
+
+@media (max-width: 530px) {
+    .page span {
+        font-size: 2.5rem;
+    }
+}
+
+.wallet__preload {
+    margin-top: -5rem;
+}
+
+.wallet-closed,
+.wallet-opened {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 600px) {
+    .wallet-closed img {
+        width: 12.5rem;
+    }
+}
+
+@media (max-width: 750px) {
+    .wallet-closed {
+        margin-top: -3.125rem;
+    }
+}
+
+.wallet-opened {
+    cursor: auto;
+}
+
+@media (max-width: 530px) {
+    .wallet-opened img {
+        width: 9.375rem;
+        margin-top: -5.625rem;
+        margin-left: 9.375rem;
+    }
+}
+
+.wallet-opened {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.open {
+    opacity: 1;
+    visibility: visible;
+    animation: open;
+    transition: all 3s;
+}
+
+.close {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes open {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.2;
+    }
+
+    40% {
+        opacity: 0.4;
+    }
+
+    60% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.move-left {
+    margin-left: -18.75rem;
+}
+
+@media (max-width: 830px) {
+    .move-left {
+        margin-left: -15.625rem;
+    }
+}
+
+@media (max-width: 750px) {
+    .move-left {
+        margin-left: -9.375rem;
+    }
+}
+
+.money {
+    position: absolute;
+    top: -3.125rem;
+    animation: snow 5s;
+    color: rgb(255, 0, 0);
+    font-size: 3.125rem;
+}
+
+@keyframes snow {
+    to {
+        transform: translateY(120vh);
+    }
+}
+
+.wallet-box {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 0.625rem;
+    display: none;
+}
+
+@media (max-width: 830px) {
+    .wallet-box {
+        left: 60%;
+    }
+}
+
+@media (max-width: 750px) {
+    .wallet-box {
+        flex-direction: column-reverse;
+        left: 70%;
+        top: 60%;
+    }
+}
+
+.wallet-left {
+    padding: 0.9375rem;
+}
+
+.wallet-left p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+@media (max-width: 530px) {
+    .wallet-left {
+        transform: translate(-20%);
+    }
+}
+
+.left-body {
+    display: flex;
+    padding: 0.625rem;
+    justify-content: space-between;
+}
+
+.income,
+.expense {
+    border: 1px solid black;
+    padding: 0.3125rem 1.875rem 3.125rem 1.875rem;
+}
+
+.income {
+    margin-right: 1.875rem;
+}
+
+.wallet-right {
+    border: 1px solid black;
+    margin-left: 1.25rem;
+    padding: 0.625rem 1.25rem;
+    width: 12.5rem;
+    text-align: center;
+}
+
+@media (max-width: 530px) {
+    .wallet-right {
+        width: 9.375rem;
+    }
+}
+
+.wallet-right span {
+    font-size: 1.25rem;
+}
+
+@media (max-width: 530px) {
+    .wallet-right {
+        margin-left: 6.25rem;
+    }
+}
+
+.cash {
+    margin-bottom: 0.9375rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 0.9375rem;
+    margin-top: 1.875rem;
+}
+
+@media (max-width: 750px) {
+    .buttons {
+        margin-top: 1.25rem;
+    }
+}
+
+.add,
+.delete {
+    font-size: 0.875rem;
+    border: 1px solid black;
+    padding: 0.3125rem;
+    border-radius: 0.9375rem;
+}
+
+@media (max-width: 530px) {
+    .add,
+  .delete {
+        font-size: 0.625rem;
+    }
+}
+
+@media (max-width: 530px) {
+    .add {
+        margin-left: -0.625rem;
+    }
+}
