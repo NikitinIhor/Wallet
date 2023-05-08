@@ -65,13 +65,6 @@ h6 {
     font-size: inherit;
 }
 
-.wrapper {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
 [class*=-ibg] {
     position: relative;
 }
@@ -92,249 +85,282 @@ h6 {
     padding: 0 0.9375rem;
 }
 
-.page h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 1.25rem;
+.note {
+    height: 100vh;
+    background: url(../images/note.jpg) no-repeat;
+    background-size: cover;
 }
 
-@media (max-width: 750px) {
-    .page h1 {
-        text-align: left;
-    }
-}
-
-.page span {
-    font-size: 3.125rem;
-    font-weight: 700;
-}
-
-@media (max-width: 530px) {
-    .page span {
-        font-size: 2.5rem;
-    }
-}
-
-.wallet__preload {
-    margin-top: -5rem;
-}
-
-.wallet-closed,
-.wallet-opened {
+.my-note {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    top: 0.3125rem;
+    right: 0.9375rem;
+    font-size: 2.5rem;
+    color: black;
+    font-weight: 900;
 }
 
-@media (max-width: 600px) {
-    .wallet-closed img {
-        width: 12.5rem;
+.buttons {
+    padding: 0.9375rem;
+    margin-left: 15.625rem;
+}
+
+@media (max-width: 710px) {
+    .buttons {
+        margin-left: 0.9375rem;
     }
 }
 
-@media (max-width: 750px) {
-    .wallet-closed {
-        margin-top: -3.125rem;
+.ad,
+.remove {
+    padding: 0.625rem;
+    margin-right: 3.125rem;
+    font-size: 1.125rem;
+    border-radius: 0.625rem;
+    box-shadow: 6px 2px 8px rgb(74, 63, 63);
+    color: black;
+    transition: all 0.3s;
+    margin-bottom: 1.875rem;
+}
+
+@media (min-width: 101.875em) {
+    .ad,
+  .remove {
+        width: 10rem;
     }
 }
 
-.wallet-opened {
-    cursor: auto;
-}
-
-@media (max-width: 530px) {
-    .wallet-opened img {
-        width: 9.375rem;
-        margin-top: -5.625rem;
-        margin-left: 9.375rem;
+@media (min-width: 20em) and (max-width: 101.875em) {
+    .ad,
+  .remove {
+        width: calc(6.25rem + 3.75 * (100vw - 20rem) / 81.875);
     }
 }
 
-.wallet-opened {
+@media (max-width: 20em) {
+    .ad,
+  .remove {
+        width: 6.25rem;
+    }
+}
+
+@media (max-width: 870px) {
+    .ad,
+  .remove {
+        margin-top: 3.75rem;
+    }
+}
+
+@media (max-width: 370px) {
+    .ad,
+  .remove {
+        margin-right: 1.25rem;
+    }
+}
+
+.ad:hover,
+.remove:hover {
+    transform: scale(0.95);
+}
+
+.ad {
+    background-color: rgb(102, 162, 102);
+}
+
+.remove {
+    background-color: rgb(228, 83, 83);
+}
+
+.ad:active,
+.remove:active,
+.delete-note:active,
+.save-note:active {
+    border: 2px solid rgb(151, 15, 154);
+    color: rgb(0, 0, 0);
+    transform: scale(0.85);
+    animation: active;
+    transition: all 0.3s;
+}
+
+@keyframes active {
+    0% {
+        scale: 1;
+    }
+
+    25% {
+        scale: 0.95;
+    }
+
+    50% {
+        scale: 0.9;
+    }
+
+    75% {
+        scale: 85;
+    }
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    border-radius: 0.625rem;
+    box-shadow: 0 0 10px black;
+    width: 18.75rem;
     opacity: 0;
     visibility: hidden;
+    background-color: white;
+    z-index: 2;
 }
 
-.open {
+.show {
     opacity: 1;
     visibility: visible;
-    animation: open;
-    transition: all 3s;
+    animation: show;
+    animation-duration: 0.5s;
 }
 
-.close {
-    opacity: 0;
-    visibility: hidden;
-}
-
-@keyframes open {
+@keyframes show {
     0% {
         opacity: 0;
+        visibility: hidden;
     }
 
-    20% {
-        opacity: 0.2;
+    25% {
+        opacity: 0.3;
+        visibility: visible;
     }
 
-    40% {
-        opacity: 0.4;
+    50% {
+        opacity: 0.5;
+        visibility: visible;
     }
 
-    60% {
-        opacity: 0.6;
-    }
-
-    80% {
+    75% {
         opacity: 0.8;
+        visibility: visible;
     }
 
     100% {
         opacity: 1;
+        visibility: visible;
     }
 }
 
-.move-left {
-    margin-left: -18.75rem;
-}
-
-@media (max-width: 830px) {
-    .move-left {
-        margin-left: -15.625rem;
-    }
-}
-
-@media (max-width: 750px) {
-    .move-left {
-        margin-left: -9.375rem;
-    }
-}
-
-.money {
-    position: absolute;
-    top: -3.125rem;
-    animation: snow 5s;
-    color: rgb(255, 0, 0);
-    font-size: 3.125rem;
-}
-
-@keyframes snow {
-    to {
-        transform: translateY(120vh);
-    }
-}
-
-.wallet-box {
-    position: absolute;
-    top: 50%;
-    left: 55%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    gap: 0.625rem;
-    display: none;
-}
-
-@media (max-width: 830px) {
-    .wallet-box {
-        left: 60%;
-    }
-}
-
-@media (max-width: 750px) {
-    .wallet-box {
-        flex-direction: column-reverse;
-        left: 70%;
-        top: 60%;
-    }
-}
-
-.wallet-left {
-    padding: 0.9375rem;
-}
-
-.wallet-left p {
-    font-size: 1.5rem;
+.error {
+    color: red;
     text-align: center;
+    letter-spacing: 2;
 }
 
-@media (max-width: 530px) {
-    .wallet-left {
-        transform: translate(-20%);
-    }
-}
-
-.left-body {
+p {
     display: flex;
-    padding: 0.625rem;
-    justify-content: space-between;
+    justify-content: center;
+    padding: 8px 0;
+    font-size: 1.25rem;
+    color: rgb(113, 113, 221);
 }
 
-.income,
-.expense {
+.category {
+    padding: 0 15px;
+}
+
+#category {
     border: 1px solid black;
-    padding: 0.3125rem 1.875rem 3.125rem 1.875rem;
+    border-radius: 0.3125rem;
+    padding: 0.3125rem;
+    background-color: rgb(255, 245, 245);
 }
 
-.income {
-    margin-right: 1.875rem;
-}
-
-.wallet-right {
+.text {
+    margin-left: 0.9375rem;
+    width: 90%;
+    max-height: 12.5rem;
+    height: 6.25rem;
+    min-width: 16.875rem;
+    max-width: 16.875rem;
+    padding: 0 0.9375rem;
+    font-size: 1.125rem;
     border: 1px solid black;
-    margin-left: 1.25rem;
-    padding: 0.625rem 1.25rem;
+    border-radius: 0.3125rem;
+    background-color: rgb(255, 245, 245);
+}
+
+.delete-note,
+.save-note {
+    padding: 5px 20px;
+    margin: 10px 20px;
+    border-radius: 0.3125rem;
+    background-color: red;
+    color: white;
+    box-shadow: 0 0 0 black;
+    transition: all 0.5s;
+}
+
+.save-note {
+    background-color: green;
+}
+
+.save-note:hover,
+.delete-note:hover {
+    transform: scale(0.95);
+}
+
+.note-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.note-item {
     width: 12.5rem;
-    text-align: center;
+    border: 1px solid black;
+    border-radius: 0.9375rem;
+    box-shadow: 1px 1px 2px 1px;
+    background-color: rgb(243, 243, 117);
+    padding: 0.625rem;
+    margin: 5px 15px;
+    position: relative;
+    align-self: start;
 }
 
-@media (max-width: 530px) {
-    .wallet-right {
+@media (max-width: 465px) {
+    .note-item {
         width: 9.375rem;
     }
 }
 
-.wallet-right span {
+@media (max-width: 370px) {
+    .note-item {
+        width: 8.125rem;
+    }
+}
+
+.note-name {
     font-size: 1.25rem;
-}
-
-@media (max-width: 530px) {
-    .wallet-right {
-        margin-left: 6.25rem;
-    }
-}
-
-.cash {
+    text-align: center;
     margin-bottom: 0.9375rem;
+    border-bottom: 1px solid black;
 }
 
-.buttons {
-    display: flex;
-    gap: 0.9375rem;
-    margin-top: 1.875rem;
+.note-body {
+    padding: 0 0.625rem;
+    max-width: 12.5rem;
+    word-wrap: break-word;
 }
 
-@media (max-width: 750px) {
-    .buttons {
-        margin-top: 1.25rem;
-    }
-}
-
-.add,
 .delete {
-    font-size: 0.875rem;
-    border: 1px solid black;
-    padding: 0.3125rem;
-    border-radius: 0.9375rem;
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-@media (max-width: 530px) {
-    .add,
-  .delete {
-        font-size: 0.625rem;
-    }
-}
-
-@media (max-width: 530px) {
-    .add {
-        margin-left: -0.625rem;
-    }
+.delete:hover {
+    transform: rotate(180deg);
 }
