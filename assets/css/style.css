@@ -95,7 +95,8 @@ h6 {
 .page h1 {
     font-size: 1.875rem;
     text-align: center;
-    padding: 1.25rem;
+    margin: 1.25rem 0;
+    padding: 0 0.625rem;
 }
 
 @media (max-width: 750px) {
@@ -126,6 +127,10 @@ h6 {
     height: 100%;
 }
 
+.wallet-closed img {
+    margin-top: -5rem;
+}
+
 @media (max-width: 600px) {
     .wallet-closed img {
         width: 12.5rem;
@@ -139,13 +144,14 @@ h6 {
 }
 
 .wallet-opened {
+    margin-top: -1.25rem;
     cursor: auto;
 }
 
 @media (max-width: 590px) {
     .wallet-opened img {
         width: 9.375rem;
-        margin-top: -5.625rem;
+        margin-top: -1.875rem;
         margin-left: 9.375rem;
     }
 }
@@ -267,11 +273,6 @@ h6 {
 @media (max-width: 590px) {
     .wallet-left {
         transform: translate(-20%);
-    }
-}
-
-@media (max-width: 590px) {
-    .wallet-left {
         padding-top: 1.25rem;
     }
 }
@@ -336,7 +337,7 @@ h6 {
 @media (max-width: 350px) {
     .income,
   .expense {
-        padding: 0.3125rem 0.625rem;
+        padding: 0.3125rem;
     }
 }
 
@@ -368,17 +369,19 @@ h6 {
 @media (max-width: 590px) {
     .wallet-right {
         width: 9.375rem;
+        margin-left: 6.875rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .wallet-right {
+        padding: 0.625rem;
+        margin-left: 5.625rem;
     }
 }
 
 .wallet-right span {
     font-size: 1.25rem;
-}
-
-@media (max-width: 590px) {
-    .wallet-right {
-        margin-left: 6.25rem;
-    }
 }
 
 .cash {
@@ -397,13 +400,19 @@ h6 {
     }
 }
 
+@media (max-width: 350px) {
+    .buttons {
+        gap: 0.3125rem;
+        margin-left: 0.625rem;
+    }
+}
+
 .add,
 .delete {
     font-size: 0.875rem;
     border: 1px solid black;
     padding: 0.3125rem;
     border-radius: 0.9375rem;
-    background-color: rgb(215, 214, 214);
     transition: all 0.3s ease 0s;
 }
 
@@ -420,10 +429,19 @@ h6 {
     transform: scale(0.9);
 }
 
+.add {
+    background-color: rgb(0, 255, 0);
+}
+
 @media (max-width: 590px) {
     .add {
         margin-left: -0.625rem;
     }
+}
+
+.delete {
+    background-color: rgb(255, 0, 0);
+    color: white;
 }
 
 .popup {
