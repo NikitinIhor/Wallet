@@ -4,42 +4,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> My note </title>
+    <title> wallet </title>
     <!-- 300light,500mid,600semiB    &display=swap   -->
     <link rel="stylesheet" href="assets/css/style.min.css">
-    <!-- <script src="https://kit.fontawesome.com/319e7c7e7a.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/319e7c7e7a.js" crossorigin="anonymous"></script>
 </head>
 <body>
     
     
     <div class="wrapper">
-        <div class="note">
-            <div class="container">
-                <div class="buttons">
-                    <button class="ad">new note</button>
-                    <button class="remove">remove all</button>
+        <main class="page">
+            <h1>my personal <span>Wallet</span></h1>
+            <div class="wallet__preload">
+                <button class="wallet-closed"><img src="assets/images/wallet-closed.jpg" alt="wallet"
+                        width="300px"></button>
+                <button class="wallet-opened"><img src="assets/images/wallet-opened.jpg" alt="wallet"
+                        width="200px"></button>
+            </div>
+            <div class="wallet-box">
+                <div class="wallet-left">
+                    <p>Transaction list</p>
+                    <div class="left-body">
+                        <div class="income">
+                            <h3 class="income-title">income:</h3>
+                            <div class="transaction" id="0">
+                                <div class="transaction-name"><i class="fa-solid fa-money-bill"></i>income</div>
+                                <div class="transaction-result">
+                                <div class="transaction-amount">2500$</div>
+                                <button class="transaction-delete">x</button>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="expense">
+                            <h3 class="expense-title">expense:</h3>
+                            <div class="transaction" id="1">
+                                <div class="transaction-name"><i class="fa-solid fa-cart-shopping"></i>shopping</div>
+                                <div class="transaction-result">
+                                    <div class="transaction-amount">-100$</div>
+                                    <button class="transaction-delete">x</button>
+                                </div>
+                            </div>
+                            <div class="transaction" id="2">
+                                <div class="transaction-name"><i class="fa-solid fa-film"></i>cinema</div>
+                                <div class="transaction-result">
+                                <div class="transaction-amount">-120$</div>
+                                <button class="transaction-delete">x</button>
+                            </div>
+                            </div>
+                            <div class="transaction" id="3">
+                                <div class="transaction-name"><i class="fa-solid fa-bowl-food"></i>food</div>
+                                <div class="transaction-result">
+                                <div class="transaction-amount">-50$</div>
+                                <button class="transaction-delete">x</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="my-note">MY NOTE</p>
-                <div class="popup">
-                    <p>create new note</p>
-                    <label class="category" for="category">choose category</label>
-                    <select id="category" onchange="categoryNumber()">
-                        <option value="0" disabled selected>categories</option>
-                        <option value="1">shop</option>
-                        <option value="1">cinema</option>
-                        <option value="1">work</option>
-                        <option value="1">hobby</option>
+                <div class="wallet-right">
+                    <div class="cash">MY CASH :</div>
+                    <span>100 zl</span>
+                    <div class="buttons">
+                        <button class="add">add transaction</button>
+                        <button class="delete">delete transaction</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="popup">
+            <div class="popup__container">
+                <p>ADD NEW TRANSACTION</p>
+                <div class="popup-title">
+                    <label for="title">TITLE :</label>
+                    <input id="title" type="text">
+                    <p class="error-title">you must fill the title</p>
+                </div>
+                <div class="popup-sum">
+                    <label for="sum">AMOUNT :
+                        <small><br>if at the beginning [ + ] - income <br>
+                            if at the beginning [ - ] - expense</small>
+                    </label>
+                    <input id="sum" type="number">
+                    <p class="error-sum">you must write the sum</p>
+                </div>
+                <div class="popup-category">
+                    <label for="category">categoria :</label>
+                    <select id="category" type="text">
+                        <option value="none" selected disabled></option>
+                        <option value="income">[ + ] income</option>
+                        <option value="shop">[ - ] shopping</option>
+                        <option value="cinema">[ - ] cinema</option>
+                        <option value="food">[ - ] food</option>
                     </select>
-                    <p>DESCRIPTION</p>
-                    <textarea class="text"></textarea>
-                    <div class="error"></div>
-                    <button class="note-btns">
-                        <button class="delete-note">delete</button>
-                        <button class="save-note">save</button>
-                    </button>
-    
+                    <p class="error-category">you must choose one of the categories</p>
                 </div>
-                <div class="note-items"></div>
+                <div class="popup-buttons">
+                    <button class="popup-save">SAVE</button>
+                    <button class="popup-close">CLOSE</button>
+                </div>
             </div>
         </div>
     </div>

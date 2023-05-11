@@ -1,87 +1,72 @@
-const myNote = document.querySelector('.my-note');
-const ad = document.querySelector('.ad');
-const remove = document.querySelector('.remove');
+const walletClosed = document.querySelector('.wallet-closed');
+const walletOpened = document.querySelector('.wallet-opened');
+const walletBox = document.querySelector('.wallet-box');
+const moneyBody = document.querySelector('.money-body');
+
+const addTransaction = document.querySelector('.add');
+const deleteTransaction = document.querySelector('.delete');
+const popupSave = document.querySelector('.popup-save');
+const popupClose = document.querySelector('.popup-close');
 const popup = document.querySelector('.popup');
-const category = document.querySelector('#category');
-const text = document.querySelector('.text');
-const deleteNote = document.querySelector('.delete-note');
-const saveNote = document.querySelector('.save-note');
-const noteItems = document.querySelector('.note-items');
-const noteItem = document.querySelector('.note-item');
-const deleteBtn = document.querySelector('.delete');
-const noteBody = document.querySelector('.note-body');
-const error = document.querySelector('.error');
+const popupTitle = document.querySelector('#title');
+const popupSum = document.querySelector('#sum');
+const popupCategory = document.querySelector('#category');
+const errorTitle = document.querySelector('.error-title');
+const errorSum = document.querySelector('.error-sum');
+const errorCategory = document.querySelector('.error-category');
 
-let noteID = 0
-let categoryName
+let myInterval
 
-ad.addEventListener('click', () => {
-    popup.classList.add('show')
+walletClosed.addEventListener('click', () => {
+    walletClosed.classList.add('close')
+    walletOpened.classList.add('open')
+    setTimeout(walletMove, 1000)
+    setTimeout(openWalletBox, 3300)
+
+    myInterval = setInterval(moneyFall, 100)
+})
+const walletMove = () => {
+    walletOpened.classList.add('move-left')
+};
+const openWalletBox = () => {
+    walletBox.style.display = 'flex'
+    clearInterval(myInterval)
+
+};
+
+const moneyFall = () => {
+    const moneyItem = document.createElement('money-item')
+    moneyItem.classList.add('money')
+    moneyItem.textContent = '💵'
+    document.body.append(moneyItem)
+
+    moneyItem.style.left = Math.random() * window.innerWidth + 'px'
+    moneyItem.style.animationDuration = Math.random() * 5 + 3 + 's'
+};
+
+addTransaction.addEventListener('click', () => {
+    popup.style.display = 'grid'
 })
 
-deleteNote.addEventListener('click', () => {
-    popup.classList.remove('show')
-    error.textContent = ''
-    text.value = ''
-    category.selectedIndex = 0
+popupClose.addEventListener('click', () => {
+    popup.style.display = 'none'
 })
 
-const newNote = () => {
-    const note = document.createElement('div')
-    note.classList.add('note-item')
-    note.setAttribute('id', noteID)
-    note.innerHTML = `
-    <div class="note-name">${categoryName}</div>
-    <button class="delete" onclick='deleteNewNote(${noteID})'>X</button>
-    <div class="note-body">
-        ${text.value}
-    </div>`
-
-    noteItems.appendChild(note)
-    noteID++
-    categoryColor(note)
+const checkForm = () => {
+    
 };
 
-const categoryNumber = () => {
-    categoryName = category.options[category.selectedIndex].text
-};
+popupSave.addEventListener('click', () => {
+    if (popupTitle.value !== '') { errorTitle.style.visibility = 'hidden' }
+    else { errorTitle.style.visibility = 'visible' }
 
-const createNewNote = () => {
-    if (category.options[category.selectedIndex].value == "0") {
-        error.textContent = `you have to choose category`
+    if (popupSum.value !== '') { errorSum.style.visibility = 'hidden' }
+    else { errorSum.style.visibility = 'visible' }
+
+    if (popupCategory.value !== 'none') { errorCategory.style.visibility = 'hidden' }
+    else { errorCategory.style.visibility = 'visible' }
+
+    if (popupTitle.value !== '' && popupSum.value !== '' && popupCategory !== 'none') {
+        checkForm()
     }
-    if (text.value == '') {
-        error.textContent = 'write a description'
-    }
-    if (category.options[category.selectedIndex].value !== "0" && text.value !== '') {
-        newNote()
-        popup.classList.remove('show')
-        text.value = ''
-        category.selectedIndex = 0
-        error.textContent=''
-    }
-};
-
-const categoryColor = (category) => {
-    switch (categoryName) {
-        case "shop":
-            category.style.backgroundColor = 'rgb(237, 117, 117)'
-            break;
-        case "cinema":
-            category.style.backgroundColor = 'rgb(191, 249, 191)'
-            break;
-        case "hobby":
-            category.style.backgroundColor = 'rgb(171, 171, 246)'
-            break;
-    }
-};
-const deleteNewNote = (id) => {
-    const noteToDelete = document.getElementById(id)
-    noteItems.removeChild(noteToDelete)
-};
-
-remove.addEventListener('click', ()=>{
-    noteItems.textContent = ''
 })
-
-saveNote.addEventListener('click', createNewNote)
