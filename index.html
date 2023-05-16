@@ -27,43 +27,15 @@
                     <div class="left-body">
                         <div class="income">
                             <h3 class="income-title">income:</h3>
-                            <div class="transaction" id="0">
-                                <div class="transaction-name"><i class="fa-solid fa-money-bill"></i>income</div>
-                                <div class="transaction-result">
-                                <div class="transaction-amount">2500$</div>
-                                <button class="transaction-delete">x</button>
-                            </div>
-                            </div>
                         </div>
                         <div class="expense">
                             <h3 class="expense-title">expense:</h3>
-                            <div class="transaction" id="1">
-                                <div class="transaction-name"><i class="fa-solid fa-cart-shopping"></i>shopping</div>
-                                <div class="transaction-result">
-                                    <div class="transaction-amount">-100$</div>
-                                    <button class="transaction-delete">x</button>
-                                </div>
-                            </div>
-                            <div class="transaction" id="2">
-                                <div class="transaction-name"><i class="fa-solid fa-film"></i>cinema</div>
-                                <div class="transaction-result">
-                                <div class="transaction-amount">-120$</div>
-                                <button class="transaction-delete">x</button>
-                            </div>
-                            </div>
-                            <div class="transaction" id="3">
-                                <div class="transaction-name"><i class="fa-solid fa-bowl-food"></i>food</div>
-                                <div class="transaction-result">
-                                <div class="transaction-amount">-50$</div>
-                                <button class="transaction-delete">x</button>
-                            </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="wallet-right">
                     <div class="cash">MY CASH :</div>
-                    <span>100 zl</span>
+                    <span class="my-cash">0 $</span>
                     <div class="buttons">
                         <button class="add">add transaction</button>
                         <button class="delete">delete transaction</button>
@@ -89,7 +61,7 @@
                 </div>
                 <div class="popup-category">
                     <label for="category">categoria :</label>
-                    <select id="category" type="text">
+                    <select id="category" type="text" onclick="selectedIcons()">
                         <option value="none" selected disabled></option>
                         <option value="income">[ + ] income</option>
                         <option value="shop">[ - ] shopping</option>

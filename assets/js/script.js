@@ -2,9 +2,13 @@ const walletClosed = document.querySelector('.wallet-closed');
 const walletOpened = document.querySelector('.wallet-opened');
 const walletBox = document.querySelector('.wallet-box');
 const moneyBody = document.querySelector('.money-body');
+const myCash = document.querySelector('.my-cash');
+
+const income = document.querySelector('.income'); 
+const expense = document.querySelector('.expense'); 
 
 const addTransaction = document.querySelector('.add');
-const deleteTransaction = document.querySelector('.delete');
+const clearAllTransactions = document.querySelector('.delete');
 const popupSave = document.querySelector('.popup-save');
 const popupClose = document.querySelector('.popup-close');
 const popup = document.querySelector('.popup');
@@ -14,8 +18,13 @@ const popupCategory = document.querySelector('#category');
 const errorTitle = document.querySelector('.error-title');
 const errorSum = document.querySelector('.error-sum');
 const errorCategory = document.querySelector('.error-category');
+const deleteTransaction = document.querySelector('.transaction-delete');
 
 let myInterval
+let ID = 0
+let transactionIcon
+let selectedIcon
+let moneyArr = [0]
 
 walletClosed.addEventListener('click', () => {
     walletClosed.classList.add('close')
@@ -53,7 +62,75 @@ popupClose.addEventListener('click', () => {
 })
 
 const checkForm = () => {
-    
+    let newTransaction = document.createElement('div')
+    newTransaction.classList.add('transaction')
+    newTransaction.setAttribute('id', ID)
+    newTransactionIcon(selectedIcon)
+
+    newTransaction.innerHTML = `
+    <div class="transaction-name">${transactionIcon} ${popupTitle.value}</div>
+    <div class="transaction-result">
+    <div class="transaction-amount">${popupSum.value}$</div>
+    <button class="transaction-delete" onclick="transactionToDelete(${ID})">x</button>
+    `
+    if(popupSum.value>0) {
+        income.appendChild(newTransaction)&&newTransaction.classList.add('1')
+    }
+    if(popupSum.value<0) {
+        expense.appendChild(newTransaction)&&newTransaction.classList.add('2')
+    }
+    moneyArr.push(parseFloat(popupSum.value))
+    moneyCount(moneyArr)
+
+    popup.style.display = 'none'
+    clear()
+    ID++
+};
+
+const transactionToDelete = (id) => {
+    const deleteTransaction = document.getElementById(id)
+ if(deleteTransaction.classList.contains('2')) {
+    expense.removeChild(deleteTransaction)
+ }else{
+    income.removeChild(deleteTransaction)
+ }
+
+ const transactionAmount = parseFloat(deleteTransaction.childNodes[3].innerText)
+ const transactionIndex = moneyArr.indexOf(transactionAmount)
+ moneyArr.splice(transactionIndex,1)
+ moneyCount(moneyArr)
+};
+
+const moneyCount = (money) => {
+   const newMoney = money.reduce((a,b) => a+b)
+   myCash.textContent = `${newMoney} $`
+};
+
+const clear = () => {
+    popupSum.value = ''
+    popupTitle.value = ''
+    popupCategory.selectedIndex = 0
+};
+
+const selectedIcons = () => {
+    selectedIcon = category.options[category.selectedIndex].text
+};
+
+const newTransactionIcon = (transaction) => {
+    switch (transaction) {
+        case '[ + ] income':
+            transactionIcon = '<i class="fa-solid fa-money-bill"></i>'
+            break;
+        case '[ - ] shopping':
+            transactionIcon = '<i class="fa-solid fa-cart-shopping"></i>'
+            break;
+        case '[ - ] cinema':
+            transactionIcon = '<i class="fa-solid fa-film"></i>'
+            break;
+        case '[ - ] food':
+            transactionIcon = '<i class="fa-solid fa-bowl-food"></i>'
+            break;
+    }
 };
 
 popupSave.addEventListener('click', () => {
@@ -66,7 +143,14 @@ popupSave.addEventListener('click', () => {
     if (popupCategory.value !== 'none') { errorCategory.style.visibility = 'hidden' }
     else { errorCategory.style.visibility = 'visible' }
 
-    if (popupTitle.value !== '' && popupSum.value !== '' && popupCategory !== 'none') {
+    if (popupTitle.value !== '' && popupSum.value !== '' && popupCategory.value !== 'none') {
         checkForm()
     }
+})
+
+clearAllTransactions.addEventListener('click', ()=> {
+   income.innerHTML = '<h3 class="income-title">income:</h3>' 
+   expense.innerHTML = '<h3 class="expense-title">expense:</h3>'
+   moneyArr = [0]
+   myCash.textContent = '0 $'
 })
