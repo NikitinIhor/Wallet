@@ -94,7 +94,6 @@ h6 {
 
 .page h1 {
     font-size: 1.875rem;
-    text-align: center;
     margin: 1.25rem 0;
     padding: 0 0.625rem;
 }
@@ -105,9 +104,9 @@ h6 {
     }
 }
 
-@media (max-width: 590px) {
+@media (max-width: 375px) {
     .page h1 {
-        margin-top: 3.125rem;
+        font-size: 1.25rem;
     }
 }
 
@@ -120,6 +119,23 @@ h6 {
     .page span {
         font-size: 2.5rem;
     }
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallet-close-btn {
+    border: 1px solid black;
+    border-radius: 0.3125rem;
+    background-color: red;
+    color: white;
+    padding: 0.3125rem 0.625rem;
+    text-transform: uppercase;
+    font-size: 0.625rem;
+    display: none;
 }
 
 .wallet__preload {

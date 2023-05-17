@@ -1,6 +1,7 @@
 const walletClosed = document.querySelector('.wallet-closed');
 const walletOpened = document.querySelector('.wallet-opened');
 const walletBox = document.querySelector('.wallet-box');
+const walletCloseBtn = document.querySelector('.wallet-close-btn');
 const moneyBody = document.querySelector('.money-body');
 const myCash = document.querySelector('.my-cash');
 
@@ -39,9 +40,18 @@ const walletMove = () => {
 };
 const openWalletBox = () => {
     walletBox.style.display = 'flex'
+    walletCloseBtn.style.display = 'block'
     clearInterval(myInterval)
 
 };
+
+walletCloseBtn.addEventListener('click', ()=> {
+    walletCloseBtn.style.display = 'none'
+    walletBox.style.display = 'none'
+    walletOpened.classList.remove('move-left')
+    walletOpened.classList.remove('open')
+    walletClosed.classList.remove('close')
+})
 
 const moneyFall = () => {
     const moneyItem = document.createElement('money-item')
