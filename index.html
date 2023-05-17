@@ -15,9 +15,9 @@
     <div class="wrapper">
         <main class="page">
             <div class="header">
-            <h1>my personal <span>Wallet</span></h1>
-            <button class="wallet-close-btn">close</button>
-        </div>
+                <h1>my personal <span>Wallet</span></h1>
+                <div class="wallet-btn"><button class="wallet-close-btn">close</button></div>
+            </div>
             <div class="wallet__preload">
                 <button class="wallet-closed"><img src="assets/images/wallet-closed.jpg" alt="wallet"
                         width="300px"></button>
@@ -77,6 +77,36 @@
                     <button class="popup-save">SAVE</button>
                     <button class="popup-close">CLOSE</button>
                 </div>
+            </div>
+        </div>
+        <div class="exchange-rate">
+            <div class="exchange-body">
+                <div class="app-body">
+                    <div class="section-left">
+                        <input type="number" class="amount-one" value="1">
+                        <select id="currency-one">
+                            <option value="PLN" selected>PLN</option>
+                            <option value="USD">USD</option>
+                            <option value="GBP">GBP</option>
+                            <option value="EUR">EUR</option>
+                            <option value="CHF">CHF</option>
+                        </select>
+                    </div>
+                    <button class="swap">
+                        <i class="fas fa-retweet"></i>
+                    </button>
+                    <div class="section-right">
+                        <input type="number" class="amount-two" disabled>
+                        <select id="currency-two">
+                            <option value="PLN">PLN</option>
+                            <option value="USD" selected>USD</option>
+                            <option value="GBP">GBP</option>
+                            <option value="EUR">EUR</option>
+                            <option value="CHF">CHF</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="rate-info">fffffdkmnckd mkmdkm kdm </p>
             </div>
         </div>
     </div>
