@@ -105,6 +105,12 @@ h6 {
     }
 }
 
+@media (max-width: 590px) {
+    .page h1 {
+        margin-top: 3.125rem;
+    }
+}
+
 .page span {
     font-size: 3.125rem;
     font-weight: 700;
@@ -143,6 +149,12 @@ h6 {
     }
 }
 
+@media (max-width: 600px) {
+    .wallet-closed {
+        margin-top: -5.625rem;
+    }
+}
+
 .wallet-opened {
     margin-top: -1.25rem;
     cursor: auto;
@@ -159,6 +171,18 @@ h6 {
 @media (max-width: 380px) {
     .wallet-opened img {
         margin-left: 11.875rem;
+    }
+}
+
+@media (max-width: 770px) {
+    .wallet-opened img {
+        margin-top: -5rem;
+    }
+}
+
+@media (max-width: 590px) {
+    .wallet-opened {
+        margin-top: -3.125rem;
     }
 }
 
@@ -262,6 +286,13 @@ h6 {
         flex-direction: column-reverse;
         left: 70%;
         top: 60%;
+        margin-top: -5.625rem;
+    }
+}
+
+@media (max-width: 590px) {
+    .wallet-box {
+        margin-top: -3.125rem;
     }
 }
 
@@ -369,14 +400,14 @@ h6 {
 @media (max-width: 590px) {
     .wallet-right {
         width: 9.375rem;
-        margin-left: 6.875rem;
+        margin-left: 3.125rem;
     }
 }
 
 @media (max-width: 350px) {
     .wallet-right {
         padding: 0.625rem;
-        margin-left: 5.625rem;
+        margin-left: 1.875rem;
     }
 }
 
