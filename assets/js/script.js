@@ -23,7 +23,10 @@ const errorSum = document.querySelector('.error-sum');
 const errorCategory = document.querySelector('.error-category');
 const deleteTransaction = document.querySelector('.transaction-delete');
 
-const exchangeBody = document.querySelector('.exchange-rate');
+const exchangeRate = document.querySelector('.exchange-rate');
+const exchangeBody = document.querySelector('.exchange-body');
+const exchangeBtnOpen = document.querySelector('.exchange-button-open');
+const exchangeBtnClose = document.querySelector('.exchange-button-close');
 
 let myInterval
 let ID = 0
@@ -31,12 +34,24 @@ let transactionIcon
 let selectedIcon
 let moneyArr = [0]
 
+exchangeBtnOpen.addEventListener('click', ()=> {
+    exchangeRate.classList.add('exchange-open')
+    exchangeBody.classList.add('show-background-color')
+    exchangeBtnOpen.style.opacity = '0'
+    exchangeBtnClose.style.opacity = '1'
+})
+exchangeBtnClose.addEventListener('click', ()=> {
+    exchangeRate.classList.remove('exchange-open')
+    exchangeBody.classList.remove('show-background-color')
+    exchangeBtnOpen.style.opacity = '1'
+    exchangeBtnClose.style.opacity = '0'
+})
+
 walletClosed.addEventListener('click', () => {
     walletClosed.classList.add('close')
     walletOpened.classList.add('open')
     setTimeout(walletMove, 1000)
     setTimeout(openWalletBox, 3300)
-    
     myInterval = setInterval(moneyFall, 100)
 })
 const walletMove = () => {
@@ -45,7 +60,8 @@ const walletMove = () => {
 const openWalletBox = () => {
     walletBox.style.display = 'flex'
     walletCloseBtn.style.display = 'block'
-    exchangeBody.style.display = 'block'
+    exchangeBtnOpen.style.display='block'
+    exchangeBtnClose.style.display='block'
     clearInterval(myInterval)
 };
 
@@ -55,7 +71,12 @@ walletCloseBtn.addEventListener('click', ()=> {
     walletOpened.classList.remove('move-left')
     walletOpened.classList.remove('open')
     walletClosed.classList.remove('close')
-    exchangeBody.style.display = 'none'
+    exchangeRate.classList.remove('exchange-open')
+    exchangeBody.classList.remove('show-background-color')
+    exchangeBtnOpen.style.display = 'none'
+    exchangeBtnClose.style.display = 'none'
+    exchangeBtnOpen.style.opacity = '1'
+    exchangeBtnClose.style.opacity = '0'
 })
 
 const moneyFall = () => {
@@ -70,12 +91,11 @@ const moneyFall = () => {
 
 addTransaction.addEventListener('click', () => {
     popup.style.display = 'grid'
-    exchangeBody.style.display = 'none'
 })
 
 popupClose.addEventListener('click', () => {
     popup.style.display = 'none'
-    exchangeBody.style.display = 'block'
+    exchangeRate.classList.add('exchange-open')
 })
 
 const checkForm = () => {
@@ -174,38 +194,38 @@ clearAllTransactions.addEventListener('click', ()=> {
 })
 // --------------------------------------------------
 
-// const currencyOne = document.querySelector('#currency-one');
-// const amountOne = document.querySelector('.amount-one');
-// const currencyTwo = document.querySelector('#currency-two');
-// const amountTwo = document.querySelector('.amount-two');
-// const swapBtn = document.querySelector('.swap');
-// const rateInfo = document.querySelector('.rate-info');
+const currencyOne = document.querySelector('#currency-one');
+const amountOne = document.querySelector('.amount-one');
+const currencyTwo = document.querySelector('#currency-two');
+const amountTwo = document.querySelector('.amount-two');
+const swapBtn = document.querySelector('.swap');
+const rateInfo = document.querySelector('.rate-info');
 
-// const calculate = () => {
+const calculate = () => {
 
-//     fetch(`https://api.ratesapi.io/api/latest?base=${currencyOne.value}&symbols=${currencyTwo.value}`)
-//         .then(res => res.json())
-//         .then(data => {
+    fetch(`https://api.ratesapi.io/api/latest?base=${currencyOne.value}&symbols=${currencyTwo.value}`)
+        .then(res => res.json())
+        .then(data => {
 
-//             const currency1 = currencyOne.value;
-//             const currency2 = currencyTwo.value;
+            const currency1 = currencyOne.value;
+            const currency2 = currencyTwo.value;
 
-//             const rate = data.rates[currency2];
-//             rateInfo.textContent = `1 ${currency1} = ${rate.toFixed(4)} ${currency2}`;
-//             amountTwo.value = (amountOne.value * rate).toFixed(2)
-//         })
-// }
+            const rate = data.rates[currency2];
+            rateInfo.textContent = `1 ${currency1} = ${rate.toFixed(4)} ${currency2}`;
+            amountTwo.value = (amountOne.value * rate).toFixed(2)
+        })
+}
 
-// const swap = () => {
-//     const oldValue = currencyOne.value;
-//     currencyOne.value = currencyTwo.value;
-//     currencyTwo.value = oldValue;
-//     calculate();
-// }
+const swap = () => {
+    const oldValue = currencyOne.value;
+    currencyOne.value = currencyTwo.value;
+    currencyTwo.value = oldValue;
+    calculate();
+}
 
-// currencyOne.addEventListener('change', calculate);
-// currencyTwo.addEventListener('change', calculate);
-// amountOne.addEventListener('input', calculate);
-// swapBtn.addEventListener('click', swap)
+currencyOne.addEventListener('change', calculate);
+currencyTwo.addEventListener('change', calculate);
+amountOne.addEventListener('input', calculate);
+swapBtn.addEventListener('click', swap)
 
-// calculate();
+calculate();

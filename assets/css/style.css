@@ -92,6 +92,10 @@ h6 {
     padding: 0 0.9375rem;
 }
 
+.wrapper {
+    max-width: 61.25rem;
+}
+
 .page {
     position: relative;
 }
@@ -286,7 +290,7 @@ h6 {
 
 @keyframes snow {
     to {
-        transform: translateY(100vh);
+        transform: translateY(110vh);
     }
 }
 
@@ -321,6 +325,12 @@ h6 {
 }
 
 @media (max-width: 590px) {
+    .wallet-left p {
+        margin-right: 12.5rem;
+    }
+}
+
+@media (max-width: 590px) {
     .wallet-left {
         transform: translate(-20%);
         padding-top: 1.25rem;
@@ -338,6 +348,12 @@ h6 {
 @media (max-width: 350px) {
     .left-body {
         padding: 0.3125rem;
+    }
+}
+
+@media (max-width: 590px) {
+    .left-body {
+        margin-right: 12.5rem;
     }
 }
 
@@ -596,20 +612,131 @@ p.error-category {
     color: rgb(173, 72, 72);
 }
 
-.exchange-rate {
-    padding-top: 20rem;
+.exchange-btn {
+    display: flex;
+}
+
+.exchange-button-open {
+    margin-left: 0.625rem;
+}
+
+.exchange-button-open span {
+    color: green;
+}
+
+.exchange-button-close {
+    opacity: 0;
+}
+
+.exchange-button-close span {
+    color: red;
+}
+
+.exchange-button-open,
+.exchange-button-close {
     display: none;
+    padding: 0.3125rem;
+    font-size: 0.875rem;
+    border: 1px solid black;
+    border-radius: 0.625rem;
+    box-shadow: 2px -2px 10pxrgb 83, 83, 247;
+    background-color: rgb(207, 207, 213);
+    color: black;
+    margin-top: 20rem;
+    transition: all 0.3s ease 0s;
+}
+
+.exchange-button-open span,
+.exchange-button-close span {
+    font-size: 1.125rem;
+}
+
+.exchange-button-open:hover,
+.exchange-button-close:hover {
+    background-color: rgb(164, 164, 170);
+}
+
+.exchange-button-open:active,
+.exchange-button-close:active {
+    transform: scale(0.9);
+}
+
+.exchange-rate {
+    margin-top: 0.625rem;
+    margin-left: -200%;
+    padding-bottom: 1.25rem;
 }
 
 @media (max-width: 770px) {
     .exchange-rate {
-        padding-top: 25rem;
+        margin-top: 3.125rem;
+    }
+}
+
+.exchange-open {
+    margin-left: 0;
+    transition: all 1s ease 0s;
+    animation: exchangeOnn;
+}
+
+@keyframes exchangeOnn {
+    0% {
+        margin-left: -200%;
+    }
+
+    25% {
+        margin-left: -160%;
+    }
+
+    50% {
+        margin-left: -120%;
+    }
+
+    50% {
+        margin-left: -80%;
+    }
+
+    75% {
+        margin-left: -40%;
+    }
+
+    100% {
+        margin-left: 0;
     }
 }
 
 .exchange-body {
+    opacity: 0;
+}
+
+.show-background-color {
     border: 1px solid black;
     background-color: #5d5c5c;
+    opacity: 1;
+    transition: all 3s ease 0s;
+    animation: showBackground;
+}
+
+@keyframes showBackground {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    75% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .app-body {
