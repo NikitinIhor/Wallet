@@ -513,6 +513,7 @@ h6 {
 .delete {
     background-color: rgb(255, 0, 0);
     color: white;
+    padding-right: 0.3125rem;
 }
 
 .popup {
@@ -614,6 +615,12 @@ p.error-category {
 
 .exchange-btn {
     display: flex;
+}
+
+@media (max-width: 590px) {
+    .exchange-btn {
+        margin-top: 6.25rem;
+    }
 }
 
 .exchange-button-open {
